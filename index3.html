@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Viva Films - Vivamax Movies Streaming & More</title>
+  <meta name="description" content="Watch Vivamax movies and more on Viva Films! Stream top Filipino films, trending Vivamax titles, and exclusive content with Viva Films's fast, mobile-friendly platform.">
+  <meta name="keywords" content="Vivamax, Viva Films, Filipino movies, Vivamax streaming, Pinoy movies, free movies, trending, exclusive, online, watch Vivamax">
+  <meta name="robots" content="index,follow">
+  <meta property="og:title" content="Viva Films - Vivamax Movies Streaming & More" />
+  <meta property="og:description" content="Watch Vivamax movies and more on Viva Films! Stream top Filipino films, trending Vivamax titles, and exclusive content." />
+  <meta property="og:image" content="https://Warren122093.github.io/babemax-logo.svg" />
+  <meta property="og:url" content="https://Warren122093.github.io/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Viva Films - Vivamax Movies Streaming & More" />
+  <meta name="twitter:description" content="Watch Vivamax movies and more on Viva Films! Stream top Filipino films, trending Vivamax titles, and exclusive content." />
+  <meta name="twitter:image" content="https://Warren122093.github.io/babemax-logo.svg" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<header class="site-header babemax-header">
+  <img src="babemax-logo.svg" alt="Viva Films Logo" class="logo" />
+  <div class="hamburger" onclick="toggleNav()">&#9776;</div>
+<nav class="nav-links" id="navMenu">
+  <a href="index.html"><i class="fas fa-film"></i> Babemax Movies</a>
+  <a href="index2.html"><i class="fas fa-video"></i> Viva Films</a>
+  <a href="index3.html"><i class="fas fa-film"></i> Regal Films</a>
+  <a href="#" id="aboutDevBtn"><i class="fas fa-info-circle"></i> About Website</a>
+  <a href="https://t.me/harleydgreat" target="_blank" rel="noopener"><i class="fab fa-telegram"></i> Telegram @harleydgreat</a>
+</nav>
+  <form id="form" class="search-container" role="search" aria-label="Viva Films movie search" autocomplete="off">
+    <input
+      type="search"
+      placeholder="Search Viva Films movies..."
+      id="search"
+      class="search"
+      aria-label="Search movies"
+      autocomplete="off"
+      spellcheck="false"
+    />
+    <button type="button" id="clearSearch" class="clear-btn" aria-label="Clear search input">↻</button>
+    <div id="autocomplete-list" class="autocomplete-items"></div>
+  </form>
+</header>
+
+<main id="main" role="main"></main>
+<div id="spinner" class="spinner" style="display: none;">
+  <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+  <div>Loading movies...</div>
+</div>
+<div class="pagination" role="navigation" aria-label="Pagination navigation">
+  <div class="page" id="prev" tabindex="0" role="button" aria-label="Previous page">Previous Page</div>
+  <div class="current" id="current" aria-current="page">1</div>
+  <div class="page" id="next" tabindex="0" role="button" aria-label="Next page">Next Page</div>
+</div>
+
+<!-- Viva Films Movie Detail Modal -->
+<div id="movieModal" class="modal babemax-modal" role="dialog" aria-modal="true" aria-labelledby="movieTitle" aria-describedby="movieOverview">
+  <div class="modal-content">
+    <button class="close-button" aria-label="Close modal">&times;</button>
+    <div class="modal-info-section">
+      <img id="modalPoster" src="" alt="Movie Poster" class="modal-poster" />
+      <div class="modal-details">
+        <h2 id="movieTitle"></h2>
+        <div class="movie-rating">
+          <span id="modalRating" class="rating-badge"></span>
+        </div>
+        <p id="movieOverview"></p>
+        <div id="serverDropdown" class="server-dropdown">
+          <label for="server">Select Server:</label>
+          <select id="server"></select>
+        </div>
+      </div>
+    </div>
+    <div class="video-container">
+      <iframe id="movieIframe" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<div id="tags"></div>
+
+<!-- Overlay for About Website -->
+<div id="aboutDevOverlay" class="overlay">
+  <div class="contact-form">
+    <button class="btn-close" onclick="closeOverlay('aboutDevOverlay')">&times;</button>
+    <h3><i class="fas fa-info-circle"></i> About This Website</h3>
+    <ul style="list-style:none;padding-left:0;text-align:left;">
+      <li><i class="fas fa-film"></i> <strong>Browse Viva Films movies</strong> by category, rating, and popularity.</li>
+      <li><i class="fas fa-search"></i> <strong>Instant Search with Autocomplete:</strong> Find movies quickly.</li>
+      <li><i class="fas fa-server"></i> <strong>Multiple Streaming Servers:</strong> Play movies from various sources.</li>
+      <li><i class="fas fa-tags"></i> <strong>Genre Filtering:</strong> Filter movies by your favorite genres.</li>
+      <li><i class="fas fa-mobile-alt"></i> <strong>Mobile & Android Responsive:</strong> Works perfectly on any device.</li>
+      <li><i class="fab fa-telegram"></i> <strong>Contact:</strong> <a href="https://t.me/harleydgreat" target="_blank" style="color:#55c6ff;">@harleydgreat</a> on Telegram</li>
+    </ul>
+  </div>
+</div>
+
+<footer class="babemax-footer">
+  <div class="social-media">
+    <a href="https://www.facebook.com/babemaxph" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i> Babemax Facebook</a>
+    <a href="https://www.instagram.com/babemaxph" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i> Babemax Instagram</a>
+    <a href="https://www.youtube.com/c/BABEMAXPH" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i> Babemax YouTube</a>
+    <a href="https://www.babemax.net" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe"></i> Babemax Website</a>
+    <a href="https://t.me/harleydgreat" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i> Telegram @harleydgreat</a>
+  </div>
+  <p>&copy; 2025 Viva Films. All rights reserved.</p>
+</footer>
+
+<script src="regalfilms/script.js"></script>
+<script>
+function openOverlay(id) {
+  document.getElementById(id).style.display = 'flex';
+}
+function closeOverlay(id) {
+  document.getElementById(id).style.display = 'none';
+}
+document.getElementById('aboutDevBtn').addEventListener('click', function(e){
+  e.preventDefault(); openOverlay('aboutDevOverlay');
+});
+window.addEventListener('keydown', function(e){
+  if (e.key === "Escape") {
+    ['aboutDevOverlay'].forEach(function(id){
+      document.getElementById(id).style.display = 'none';
+    });
+  }
+});
+['aboutDevOverlay'].forEach(function(id){
+  document.getElementById(id).addEventListener('click', function(e){
+    if (e.target === this) this.style.display = 'none';
+  });
+});
+
+// Hamburger for mobile nav
+function toggleNav() {
+  const navMenu = document.getElementById('navMenu');
+  navMenu.classList.toggle('active');
+}
+</script>
+</body>
+</html>

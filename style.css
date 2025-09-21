@@ -1182,3 +1182,47 @@ footer {
   .contact-form textarea { font-size: 0.97rem; padding: 0.6rem 0.8rem; }
   .btn-close { font-size: 1.3rem; width: 30px; height: 30px; top: 8px; right: 8px; }
 }
+/* --- Android: 2 images per row, maximize space --- */
+@media (max-width: 700px) {
+  main {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.7vw !important;
+    justify-content: stretch !important;
+    align-items: stretch !important;
+    padding: 0 2vw !important;
+    width: 100vw !important;
+  }
+  .movie {
+    width: 100% !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    aspect-ratio: 2/3 !important;
+    border-radius: 7px !important;
+  }
+  .movie img {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 1px !important;
+    aspect-ratio: 2/3 !important;
+    object-fit: cover !important;
+    border-radius: 7px 7px 0 0 !important;
+  }
+  .movie-info {
+    padding: 0.38rem 0.5rem 0.5rem !important;
+    font-size: 13px !important;
+  }
+}
+
+/* --- Even smaller screens: 1 image per row --- */
+@media (max-width: 400px) {
+  main {
+    grid-template-columns: 1fr !important;
+    gap: 2vw !important;
+    padding: 0 1vw !important;
+  }
+  .movie img {
+    height: auto !important;
+  }
+}
